@@ -1,0 +1,134 @@
+body {
+    font: 12px "Helvetica Neue", sans-serif;
+}
+table {
+    border-collapse: collapse;
+}
+td, th {
+    padding: 0 5px;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+}
+
+a {
+    text-decoration: none;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.hidden {
+    display: none;
+}
+.noselect {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.reagents {
+    float: left;
+    margin-right: 10px;
+}
+.reagents .head th {
+    padding: 5px;
+    background-color: #ddd;
+}
+.reagent-img {
+    height: 36px;
+    width: 10px;
+}
+.reagent-name {
+    text-align: left;
+}
+
+.poison {
+    background-color: #ffcccc;
+}
+.potion {
+    background-color: #ccffcc;
+}
+
+.effect {
+    cursor: pointer;
+}
+.effect:hover .effect-name {
+    text-decoration: underline;
+}
+td.effect img {
+    margin-bottom: 0;
+    vertical-align: bottom;
+}
+div.effect img {
+    vertical-align: middle;
+    margin-bottom: 0;
+    position: relative;
+    top: -2px;
+}
+
+
+.effects {
+    float: left;
+    border: 1px solid #ccc;
+}
+.effects header {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    background-color: #ddd;
+    border-bottom: 1px solid #ccc;
+}
+.effects .effect {
+    height: 36px;
+    line-height: 36px;
+    padding: 0 8px 0 5px;
+    border-bottom: 1px solid #ccc;
+}
+.potions {
+    margin-right: 10px;
+}
+
+
+.filtered-mode .reagents tr:not(:first-child) {
+    opacity: 0.2;
+}
+.filtered-mode .reagent-filtered {
+    opacity: 1 !important;
+}
+.filtered-mode .effect-filtered.potion {
+    background-color: #66ff66;
+}
+.filtered-mode .effect-filtered.poison {
+    background-color: #ff8888;
+}
+.filtered-mode .effects .effect {
+    opacity: 0.2;
+}
+.filtered-mode .effects .effect-filtered {
+    opacity: 1;
+}
+.filtered-mode.hide-others .reagents tr:not(:first-child):not(.reagent-filtered) {
+    display: none;
+}
+
+
+h1 {
+    font-weight: normal;
+    display: inline-block;
+}
+.filter-options {
+    display: inline-block;
+    margin: 0 0 0 100px;
+}
+.filter-options.hidden {
+    display: none;
+}
+.filter-options button {
+    display: none;
+    margin-left: 30px;
+}
+.info {
+    clear: both;
+    padding: 30px 0;
+}

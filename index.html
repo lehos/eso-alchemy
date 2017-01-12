@@ -1,0 +1,1228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ESO alchemy helper</title>
+
+    <link rel="stylesheet" href="main.css">
+    <script src="js/jquery-3.1.1.slim.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+
+
+<header class="clearfix">
+    <h1>ESO Alchemy effects helper</h1>
+
+    <div class="filter-options hidden">
+        <label class="noselect">
+            <input type="checkbox" class="js-hide-others"> Hide other reagents
+        </label>
+
+        <button class="js-clear-filter">Clear filter</button>
+    </div>
+</header>
+
+<table class="reagents">
+    <tbody>
+    <tr class="head">
+        <th colspan="2">Reagent</th>
+        <th>Primary Effect</th>
+        <th>Secondary Effect</th>
+        <th>Tertiary Effect</th>
+        <th>Quaternary Effect</th>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Beetle Scuttle.png"
+                src="http://www.uesp.net/w/images/thumb/e/ed/ON-icon-reagent-Beetle_Scuttle.png/32px-ON-icon-reagent-Beetle_Scuttle.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/e/ed/ON-icon-reagent-Beetle_Scuttle.png/48px-ON-icon-reagent-Beetle_Scuttle.png 1.5x, http://www.uesp.net/w/images/e/ed/ON-icon-reagent-Beetle_Scuttle.png 2x">
+        </td>
+        <th class="reagent-name">Beetle Scuttle</th>
+        <td class="effect poison">
+            <img alt="Lower Spell Resist"
+                src="http://www.uesp.net/w/images/thumb/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Resist.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Resist.png 1.5x, http://www.uesp.net/w/images/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png 2x">
+            <span class="effect-name">Lower Spell Resist</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Increase Armor"
+                src="http://www.uesp.net/w/images/thumb/7/76/ON-icon-effect-Alchemy-Increase_Armor.png/16px-ON-icon-effect-Alchemy-Increase_Armor.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/76/ON-icon-effect-Alchemy-Increase_Armor.png/24px-ON-icon-effect-Alchemy-Increase_Armor.png 1.5x, http://www.uesp.net/w/images/7/76/ON-icon-effect-Alchemy-Increase_Armor.png 2x">
+            <span class="effect-name">Increase Armor</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Protection"
+                src="http://www.uesp.net/w/images/thumb/2/2a/ON-icon-effect-Alchemy-Protection.png/16px-ON-icon-effect-Alchemy-Protection.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/2a/ON-icon-effect-Alchemy-Protection.png/24px-ON-icon-effect-Alchemy-Protection.png 1.5x, http://www.uesp.net/w/images/2/2a/ON-icon-effect-Alchemy-Protection.png 2x">
+            <span class="effect-name">Protection</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Vitality"
+                src="http://www.uesp.net/w/images/thumb/5/51/ON-icon-effect-Alchemy-Vitality.png/16px-ON-icon-effect-Alchemy-Vitality.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/51/ON-icon-effect-Alchemy-Vitality.png/24px-ON-icon-effect-Alchemy-Vitality.png 1.5x, http://www.uesp.net/w/images/5/51/ON-icon-effect-Alchemy-Vitality.png 2x">
+            <span class="effect-name">Vitality</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Blessed Thistle.png"
+                src="http://www.uesp.net/w/images/thumb/8/8a/ON-icon-reagent-Blessed_Thistle.png/32px-ON-icon-reagent-Blessed_Thistle.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/8/8a/ON-icon-reagent-Blessed_Thistle.png 1.5x, http://www.uesp.net/w/images/8/8a/ON-icon-reagent-Blessed_Thistle.png 2x">
+        </td>
+        <th class="reagent-name">Blessed Thistle</th>
+        <td class="effect potion">
+            <img alt="Restore Stamina"
+                src="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png/16px-ON-icon-effect-Alchemy-Restore_Stamina.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png/24px-ON-icon-effect-Alchemy-Restore_Stamina.png 1.5x, http://www.uesp.net/w/images/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png 2x">
+            <span class="effect-name">Restore Stamina</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Increase Weapon Power"
+                src="http://www.uesp.net/w/images/thumb/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png/16px-ON-icon-effect-Alchemy-Increase_Weapon_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png/24px-ON-icon-effect-Alchemy-Increase_Weapon_Power.png 1.5x, http://www.uesp.net/w/images/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png 2x">
+            <span class="effect-name">Increase Weapon Power</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Ravage Health"
+                src="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/16px-ON-icon-effect-Alchemy-Ravage_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/24px-ON-icon-effect-Alchemy-Ravage_Health.png 1.5x, http://www.uesp.net/w/images/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png 2x">
+            <span class="effect-name">Ravage Health</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Speed"
+                src="http://www.uesp.net/w/images/thumb/3/3b/ON-icon-effect-Alchemy-Speed.png/16px-ON-icon-effect-Alchemy-Speed.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/3b/ON-icon-effect-Alchemy-Speed.png/24px-ON-icon-effect-Alchemy-Speed.png 1.5x, http://www.uesp.net/w/images/3/3b/ON-icon-effect-Alchemy-Speed.png 2x">
+            <span class="effect-name">Speed</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Blue Entoloma.png"
+                src="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-reagent-Blue_Entoloma.png/32px-ON-icon-reagent-Blue_Entoloma.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-reagent-Blue_Entoloma.png/48px-ON-icon-reagent-Blue_Entoloma.png 1.5x, http://www.uesp.net/w/images/6/6a/ON-icon-reagent-Blue_Entoloma.png 2x">
+        </td>
+        <th class="reagent-name">Blue Entoloma</th>
+        <td class="effect poison">
+            <img alt="Ravage Magicka"
+                src="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/16px-ON-icon-effect-Alchemy-Ravage_Magicka.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/24px-ON-icon-effect-Alchemy-Ravage_Magicka.png 1.5x, http://www.uesp.net/w/images/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png 2x">
+            <span class="effect-name">Ravage Magicka</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Spell Power"
+                src="http://www.uesp.net/w/images/thumb/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Power.png 1.5x, http://www.uesp.net/w/images/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png 2x">
+            <span class="effect-name">Lower Spell Power</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Restore Health"
+                src="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/16px-ON-icon-effect-Alchemy-Restore_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/24px-ON-icon-effect-Alchemy-Restore_Health.png 1.5x, http://www.uesp.net/w/images/2/24/ON-icon-effect-Alchemy-Restore_Health.png 2x">
+            <span class="effect-name">Restore Health</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Invisible"
+                src="http://www.uesp.net/w/images/thumb/d/da/ON-icon-effect-Alchemy-Invisible.png/16px-ON-icon-effect-Alchemy-Invisible.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/d/da/ON-icon-effect-Alchemy-Invisible.png/24px-ON-icon-effect-Alchemy-Invisible.png 1.5x, http://www.uesp.net/w/images/d/da/ON-icon-effect-Alchemy-Invisible.png 2x">
+            <span class="effect-name">Invisible</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Bugloss.png"
+                src="http://www.uesp.net/w/images/thumb/1/1b/ON-icon-reagent-Bugloss.png/32px-ON-icon-reagent-Bugloss.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/1/1b/ON-icon-reagent-Bugloss.png/48px-ON-icon-reagent-Bugloss.png 1.5x, http://www.uesp.net/w/images/1/1b/ON-icon-reagent-Bugloss.png 2x">
+        </td>
+        <th class="reagent-name">Bugloss</th>
+        <td class="effect potion">
+            <img alt="Increase Spell Resist"
+                src="http://www.uesp.net/w/images/thumb/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png/16px-ON-icon-effect-Alchemy-Increase_Spell_Resist.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png/24px-ON-icon-effect-Alchemy-Increase_Spell_Resist.png 1.5x, http://www.uesp.net/w/images/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png 2x">
+            <span class="effect-name">Increase Spell Resist</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Restore Health"
+                src="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/16px-ON-icon-effect-Alchemy-Restore_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/24px-ON-icon-effect-Alchemy-Restore_Health.png 1.5x, http://www.uesp.net/w/images/2/24/ON-icon-effect-Alchemy-Restore_Health.png 2x">
+            <span class="effect-name">Restore Health</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Spell Power"
+                src="http://www.uesp.net/w/images/thumb/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Power.png 1.5x, http://www.uesp.net/w/images/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png 2x">
+            <span class="effect-name">Lower Spell Power</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Restore Magicka"
+                src="http://www.uesp.net/w/images/thumb/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png/16px-ON-icon-effect-Alchemy-Restore_Magicka.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png/24px-ON-icon-effect-Alchemy-Restore_Magicka.png 1.5x, http://www.uesp.net/w/images/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png 2x">
+            <span class="effect-name">Restore Magicka</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Butterfly Wing.png"
+                src="http://www.uesp.net/w/images/thumb/5/50/ON-icon-reagent-Butterfly_Wing.png/32px-ON-icon-reagent-Butterfly_Wing.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/5/50/ON-icon-reagent-Butterfly_Wing.png/48px-ON-icon-reagent-Butterfly_Wing.png 1.5x, http://www.uesp.net/w/images/5/50/ON-icon-reagent-Butterfly_Wing.png 2x">
+        </td>
+        <th class="reagent-name">Butterfly Wing</th>
+        <td class="effect potion">
+            <img alt="Restore Health"
+                src="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/16px-ON-icon-effect-Alchemy-Restore_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/24px-ON-icon-effect-Alchemy-Restore_Health.png 1.5x, http://www.uesp.net/w/images/2/24/ON-icon-effect-Alchemy-Restore_Health.png 2x">
+            <span class="effect-name">Restore Health</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Spell Crit"
+                src="http://www.uesp.net/w/images/thumb/3/3f/ON-icon-effect-Alchemy-Lower_Spell_Crit.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/3f/ON-icon-effect-Alchemy-Lower_Spell_Crit.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Crit.png 1.5x, http://www.uesp.net/w/images/3/3f/ON-icon-effect-Alchemy-Lower_Spell_Crit.png 2x">
+            <span class="effect-name">Lower Spell Crit</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Sustained Restore Health"
+                src="http://www.uesp.net/w/images/thumb/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png/16px-ON-icon-effect-Alchemy-Sustained_Restore_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png/24px-ON-icon-effect-Alchemy-Sustained_Restore_Health.png 1.5x, http://www.uesp.net/w/images/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png 2x">
+            <span class="effect-name">Sustained Restore Health</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Vitality"
+                src="http://www.uesp.net/w/images/thumb/5/51/ON-icon-effect-Alchemy-Vitality.png/16px-ON-icon-effect-Alchemy-Vitality.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/51/ON-icon-effect-Alchemy-Vitality.png/24px-ON-icon-effect-Alchemy-Vitality.png 1.5x, http://www.uesp.net/w/images/5/51/ON-icon-effect-Alchemy-Vitality.png 2x">
+            <span class="effect-name">Vitality</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Columbine.png"
+                src="http://www.uesp.net/w/images/thumb/3/34/ON-icon-reagent-Columbine.png/32px-ON-icon-reagent-Columbine.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/3/34/ON-icon-reagent-Columbine.png 1.5x, http://www.uesp.net/w/images/3/34/ON-icon-reagent-Columbine.png 2x">
+        </td>
+        <th class="reagent-name">Columbine</th>
+        <td class="effect potion">
+            <img alt="Restore Health"
+                src="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/16px-ON-icon-effect-Alchemy-Restore_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/24px-ON-icon-effect-Alchemy-Restore_Health.png 1.5x, http://www.uesp.net/w/images/2/24/ON-icon-effect-Alchemy-Restore_Health.png 2x">
+            <span class="effect-name">Restore Health</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Restore Magicka"
+                src="http://www.uesp.net/w/images/thumb/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png/16px-ON-icon-effect-Alchemy-Restore_Magicka.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png/24px-ON-icon-effect-Alchemy-Restore_Magicka.png 1.5x, http://www.uesp.net/w/images/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png 2x">
+            <span class="effect-name">Restore Magicka</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Restore Stamina"
+                src="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png/16px-ON-icon-effect-Alchemy-Restore_Stamina.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png/24px-ON-icon-effect-Alchemy-Restore_Stamina.png 1.5x, http://www.uesp.net/w/images/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png 2x">
+            <span class="effect-name">Restore Stamina</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Unstoppable"
+                src="http://www.uesp.net/w/images/thumb/1/11/ON-icon-effect-Alchemy-Unstoppable.png/16px-ON-icon-effect-Alchemy-Unstoppable.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/1/11/ON-icon-effect-Alchemy-Unstoppable.png/24px-ON-icon-effect-Alchemy-Unstoppable.png 1.5x, http://www.uesp.net/w/images/1/11/ON-icon-effect-Alchemy-Unstoppable.png 2x">
+            <span class="effect-name">Unstoppable</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Corn Flower.png"
+                src="http://www.uesp.net/w/images/thumb/c/c8/ON-icon-reagent-Corn_Flower.png/32px-ON-icon-reagent-Corn_Flower.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/c/c8/ON-icon-reagent-Corn_Flower.png 1.5x, http://www.uesp.net/w/images/c/c8/ON-icon-reagent-Corn_Flower.png 2x">
+        </td>
+        <th class="reagent-name">Corn Flower</th>
+        <td class="effect potion">
+            <img alt="Restore Magicka"
+                src="http://www.uesp.net/w/images/thumb/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png/16px-ON-icon-effect-Alchemy-Restore_Magicka.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png/24px-ON-icon-effect-Alchemy-Restore_Magicka.png 1.5x, http://www.uesp.net/w/images/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png 2x">
+            <span class="effect-name">Restore Magicka</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Increase Spell Power"
+                src="http://www.uesp.net/w/images/thumb/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png/16px-ON-icon-effect-Alchemy-Increase_Spell_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png/24px-ON-icon-effect-Alchemy-Increase_Spell_Power.png 1.5x, http://www.uesp.net/w/images/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png 2x">
+            <span class="effect-name">Increase Spell Power</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Ravage Health"
+                src="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/16px-ON-icon-effect-Alchemy-Ravage_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/24px-ON-icon-effect-Alchemy-Ravage_Health.png 1.5x, http://www.uesp.net/w/images/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png 2x">
+            <span class="effect-name">Ravage Health</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Detection"
+                src="http://www.uesp.net/w/images/thumb/3/37/ON-icon-effect-Alchemy-Detection.png/16px-ON-icon-effect-Alchemy-Detection.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/37/ON-icon-effect-Alchemy-Detection.png/24px-ON-icon-effect-Alchemy-Detection.png 1.5x, http://www.uesp.net/w/images/3/37/ON-icon-effect-Alchemy-Detection.png 2x">
+            <span class="effect-name">Detection</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Dragonthorn.png"
+                src="http://www.uesp.net/w/images/thumb/2/21/ON-icon-reagent-Dragonthorn.png/32px-ON-icon-reagent-Dragonthorn.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/2/21/ON-icon-reagent-Dragonthorn.png/48px-ON-icon-reagent-Dragonthorn.png 1.5x, http://www.uesp.net/w/images/2/21/ON-icon-reagent-Dragonthorn.png 2x">
+        </td>
+        <th class="reagent-name">Dragonthorn</th>
+        <td class="effect potion">
+            <img alt="Increase Weapon Power"
+                src="http://www.uesp.net/w/images/thumb/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png/16px-ON-icon-effect-Alchemy-Increase_Weapon_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png/24px-ON-icon-effect-Alchemy-Increase_Weapon_Power.png 1.5x, http://www.uesp.net/w/images/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png 2x">
+            <span class="effect-name">Increase Weapon Power</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Restore Stamina"
+                src="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png/16px-ON-icon-effect-Alchemy-Restore_Stamina.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png/24px-ON-icon-effect-Alchemy-Restore_Stamina.png 1.5x, http://www.uesp.net/w/images/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png 2x">
+            <span class="effect-name">Restore Stamina</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Armor"
+                src="http://www.uesp.net/w/images/thumb/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png/16px-ON-icon-effect-Alchemy-Lower_Armor.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png/24px-ON-icon-effect-Alchemy-Lower_Armor.png 1.5x, http://www.uesp.net/w/images/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png 2x">
+            <span class="effect-name">Lower Armor</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Weapon Crit"
+                src="http://www.uesp.net/w/images/thumb/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png/16px-ON-icon-effect-Alchemy-Weapon_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png/24px-ON-icon-effect-Alchemy-Weapon_Crit.png 1.5x, http://www.uesp.net/w/images/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png 2x">
+            <span class="effect-name">Weapon Crit</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Emetic Russula.png"
+                src="http://www.uesp.net/w/images/thumb/a/a4/ON-icon-reagent-Emetic_Russula.png/32px-ON-icon-reagent-Emetic_Russula.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/a/a4/ON-icon-reagent-Emetic_Russula.png 1.5x, http://www.uesp.net/w/images/a/a4/ON-icon-reagent-Emetic_Russula.png 2x">
+        </td>
+        <th class="reagent-name">Emetic Russula</th>
+        <td class="effect poison">
+            <img alt="Ravage Health"
+                src="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/16px-ON-icon-effect-Alchemy-Ravage_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/24px-ON-icon-effect-Alchemy-Ravage_Health.png 1.5x, http://www.uesp.net/w/images/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png 2x">
+            <span class="effect-name">Ravage Health</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Ravage Magicka"
+                src="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/16px-ON-icon-effect-Alchemy-Ravage_Magicka.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/24px-ON-icon-effect-Alchemy-Ravage_Magicka.png 1.5x, http://www.uesp.net/w/images/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png 2x">
+            <span class="effect-name">Ravage Magicka</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Ravage Stamina"
+                src="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/16px-ON-icon-effect-Alchemy-Ravage_Stamina.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/24px-ON-icon-effect-Alchemy-Ravage_Stamina.png 1.5x, http://www.uesp.net/w/images/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png 2x">
+            <span class="effect-name">Ravage Stamina</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Stun"
+                src="http://www.uesp.net/w/images/thumb/0/08/ON-icon-effect-Alchemy-Stun.png/16px-ON-icon-effect-Alchemy-Stun.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/0/08/ON-icon-effect-Alchemy-Stun.png/24px-ON-icon-effect-Alchemy-Stun.png 1.5x, http://www.uesp.net/w/images/0/08/ON-icon-effect-Alchemy-Stun.png 2x">
+            <span class="effect-name">Stun</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Fleshfly Larva.png"
+                src="http://www.uesp.net/w/images/thumb/f/f0/ON-icon-reagent-Fleshfly_Larva.png/32px-ON-icon-reagent-Fleshfly_Larva.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/f/f0/ON-icon-reagent-Fleshfly_Larva.png/48px-ON-icon-reagent-Fleshfly_Larva.png 1.5x, http://www.uesp.net/w/images/f/f0/ON-icon-reagent-Fleshfly_Larva.png 2x">
+        </td>
+        <th class="reagent-name">Fleshfly Larva</th>
+        <td class="effect poison">
+            <img alt="Ravage Stamina"
+                src="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/16px-ON-icon-effect-Alchemy-Ravage_Stamina.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/24px-ON-icon-effect-Alchemy-Ravage_Stamina.png 1.5x, http://www.uesp.net/w/images/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png 2x">
+            <span class="effect-name">Ravage Stamina</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Vulnerability"
+                src="http://www.uesp.net/w/images/thumb/8/8b/ON-icon-effect-Alchemy-Vulnerability.png/16px-ON-icon-effect-Alchemy-Vulnerability.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/8/8b/ON-icon-effect-Alchemy-Vulnerability.png/24px-ON-icon-effect-Alchemy-Vulnerability.png 1.5x, http://www.uesp.net/w/images/8/8b/ON-icon-effect-Alchemy-Vulnerability.png 2x">
+            <span class="effect-name">Vulnerability</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Creeping Ravage Health"
+                src="http://www.uesp.net/w/images/thumb/9/9b/ON-icon-effect-Alchemy-Creeping_Ravage_Health.png/16px-ON-icon-effect-Alchemy-Creeping_Ravage_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/9/9b/ON-icon-effect-Alchemy-Creeping_Ravage_Health.png/24px-ON-icon-effect-Alchemy-Creeping_Ravage_Health.png 1.5x, http://www.uesp.net/w/images/9/9b/ON-icon-effect-Alchemy-Creeping_Ravage_Health.png 2x">
+            <span class="effect-name">Creeping Ravage Health</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Vitality"
+                src="http://www.uesp.net/w/images/thumb/5/51/ON-icon-effect-Alchemy-Vitality.png/16px-ON-icon-effect-Alchemy-Vitality.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/51/ON-icon-effect-Alchemy-Vitality.png/24px-ON-icon-effect-Alchemy-Vitality.png 1.5x, http://www.uesp.net/w/images/5/51/ON-icon-effect-Alchemy-Vitality.png 2x">
+            <span class="effect-name">Vitality</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Imp Stool.png"
+                src="http://www.uesp.net/w/images/thumb/b/b8/ON-icon-reagent-Imp_Stool.png/32px-ON-icon-reagent-Imp_Stool.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/b/b8/ON-icon-reagent-Imp_Stool.png 1.5x, http://www.uesp.net/w/images/b/b8/ON-icon-reagent-Imp_Stool.png 2x">
+        </td>
+        <th class="reagent-name">Imp Stool</th>
+        <td class="effect poison">
+            <img alt="Lower Weapon Power"
+                src="http://www.uesp.net/w/images/thumb/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png/16px-ON-icon-effect-Alchemy-Lower_Weapon_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png/24px-ON-icon-effect-Alchemy-Lower_Weapon_Power.png 1.5x, http://www.uesp.net/w/images/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png 2x">
+            <span class="effect-name">Lower Weapon Power</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Ravage Stamina"
+                src="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/16px-ON-icon-effect-Alchemy-Ravage_Stamina.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/24px-ON-icon-effect-Alchemy-Ravage_Stamina.png 1.5x, http://www.uesp.net/w/images/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png 2x">
+            <span class="effect-name">Ravage Stamina</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Increase Armor"
+                src="http://www.uesp.net/w/images/thumb/7/76/ON-icon-effect-Alchemy-Increase_Armor.png/16px-ON-icon-effect-Alchemy-Increase_Armor.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/76/ON-icon-effect-Alchemy-Increase_Armor.png/24px-ON-icon-effect-Alchemy-Increase_Armor.png 1.5x, http://www.uesp.net/w/images/7/76/ON-icon-effect-Alchemy-Increase_Armor.png 2x">
+            <span class="effect-name">Increase Armor</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Weapon Crit"
+                src="http://www.uesp.net/w/images/thumb/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png/16px-ON-icon-effect-Alchemy-Lower_Weapon_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png/24px-ON-icon-effect-Alchemy-Lower_Weapon_Crit.png 1.5x, http://www.uesp.net/w/images/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png 2x">
+            <span class="effect-name">Lower Weapon Crit</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Lady's Smock.png"
+                src="http://www.uesp.net/w/images/thumb/2/2e/ON-icon-reagent-Lady%27s_Smock.png/32px-ON-icon-reagent-Lady%27s_Smock.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/2/2e/ON-icon-reagent-Lady%27s_Smock.png/48px-ON-icon-reagent-Lady%27s_Smock.png 1.5x, http://www.uesp.net/w/images/2/2e/ON-icon-reagent-Lady%27s_Smock.png 2x">
+        </td>
+        <th class="reagent-name">Lady's Smock</th>
+        <td class="effect potion">
+            <img alt="Increase Spell Power"
+                src="http://www.uesp.net/w/images/thumb/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png/16px-ON-icon-effect-Alchemy-Increase_Spell_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png/24px-ON-icon-effect-Alchemy-Increase_Spell_Power.png 1.5x, http://www.uesp.net/w/images/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png 2x">
+            <span class="effect-name">Increase Spell Power</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Restore Magicka"
+                src="http://www.uesp.net/w/images/thumb/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png/16px-ON-icon-effect-Alchemy-Restore_Magicka.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png/24px-ON-icon-effect-Alchemy-Restore_Magicka.png 1.5x, http://www.uesp.net/w/images/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png 2x">
+            <span class="effect-name">Restore Magicka</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Spell Resist"
+                src="http://www.uesp.net/w/images/thumb/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Resist.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Resist.png 1.5x, http://www.uesp.net/w/images/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png 2x">
+            <span class="effect-name">Lower Spell Resist</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Spell Crit"
+                src="http://www.uesp.net/w/images/thumb/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png/16px-ON-icon-effect-Alchemy-Spell_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png/24px-ON-icon-effect-Alchemy-Spell_Crit.png 1.5x, http://www.uesp.net/w/images/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png 2x">
+            <span class="effect-name">Spell Crit</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Luminous Russula.png"
+                src="http://www.uesp.net/w/images/thumb/3/39/ON-icon-reagent-Luminous_Russula.png/32px-ON-icon-reagent-Luminous_Russula.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/3/39/ON-icon-reagent-Luminous_Russula.png/48px-ON-icon-reagent-Luminous_Russula.png 1.5x, http://www.uesp.net/w/images/3/39/ON-icon-reagent-Luminous_Russula.png 2x">
+        </td>
+        <th class="reagent-name">Luminous Russula</th>
+        <td class="effect poison">
+            <img alt="Ravage Stamina"
+                src="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/16px-ON-icon-effect-Alchemy-Ravage_Stamina.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/24px-ON-icon-effect-Alchemy-Ravage_Stamina.png 1.5x, http://www.uesp.net/w/images/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png 2x">
+            <span class="effect-name">Ravage Stamina</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Weapon Power"
+                src="http://www.uesp.net/w/images/thumb/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png/16px-ON-icon-effect-Alchemy-Lower_Weapon_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png/24px-ON-icon-effect-Alchemy-Lower_Weapon_Power.png 1.5x, http://www.uesp.net/w/images/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png 2x">
+            <span class="effect-name">Lower Weapon Power</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Restore Health"
+                src="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/16px-ON-icon-effect-Alchemy-Restore_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/24px-ON-icon-effect-Alchemy-Restore_Health.png 1.5x, http://www.uesp.net/w/images/2/24/ON-icon-effect-Alchemy-Restore_Health.png 2x">
+            <span class="effect-name">Restore Health</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Reduce Speed"
+                src="http://www.uesp.net/w/images/thumb/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png/16px-ON-icon-effect-Alchemy-Reduce_Speed.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png/24px-ON-icon-effect-Alchemy-Reduce_Speed.png 1.5x, http://www.uesp.net/w/images/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png 2x">
+            <span class="effect-name">Reduce Speed</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Mountain Flower.png"
+                src="http://www.uesp.net/w/images/thumb/8/88/ON-icon-reagent-Mountain_Flower.png/32px-ON-icon-reagent-Mountain_Flower.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/8/88/ON-icon-reagent-Mountain_Flower.png/48px-ON-icon-reagent-Mountain_Flower.png 1.5x, http://www.uesp.net/w/images/8/88/ON-icon-reagent-Mountain_Flower.png 2x">
+        </td>
+        <th class="reagent-name">Mountain Flower</th>
+        <td class="effect potion">
+            <img alt="Increase Armor"
+                src="http://www.uesp.net/w/images/thumb/7/76/ON-icon-effect-Alchemy-Increase_Armor.png/16px-ON-icon-effect-Alchemy-Increase_Armor.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/76/ON-icon-effect-Alchemy-Increase_Armor.png/24px-ON-icon-effect-Alchemy-Increase_Armor.png 1.5x, http://www.uesp.net/w/images/7/76/ON-icon-effect-Alchemy-Increase_Armor.png 2x">
+            <span class="effect-name">Increase Armor</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Restore Health"
+                src="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/16px-ON-icon-effect-Alchemy-Restore_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/24px-ON-icon-effect-Alchemy-Restore_Health.png 1.5x, http://www.uesp.net/w/images/2/24/ON-icon-effect-Alchemy-Restore_Health.png 2x">
+            <span class="effect-name">Restore Health</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Weapon Power"
+                src="http://www.uesp.net/w/images/thumb/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png/16px-ON-icon-effect-Alchemy-Lower_Weapon_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png/24px-ON-icon-effect-Alchemy-Lower_Weapon_Power.png 1.5x, http://www.uesp.net/w/images/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png 2x">
+            <span class="effect-name">Lower Weapon Power</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Restore Stamina"
+                src="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png/16px-ON-icon-effect-Alchemy-Restore_Stamina.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png/24px-ON-icon-effect-Alchemy-Restore_Stamina.png 1.5x, http://www.uesp.net/w/images/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png 2x">
+            <span class="effect-name">Restore Stamina</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Mudcrab Chitin.png"
+                src="http://www.uesp.net/w/images/thumb/0/02/ON-icon-reagent-Mudcrab_Chitin.png/32px-ON-icon-reagent-Mudcrab_Chitin.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/0/02/ON-icon-reagent-Mudcrab_Chitin.png/48px-ON-icon-reagent-Mudcrab_Chitin.png 1.5x, http://www.uesp.net/w/images/0/02/ON-icon-reagent-Mudcrab_Chitin.png 2x">
+        </td>
+        <th class="reagent-name">Mudcrab Chitin</th>
+        <td class="effect potion">
+            <img alt="Increase Spell Resist"
+                src="http://www.uesp.net/w/images/thumb/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png/16px-ON-icon-effect-Alchemy-Increase_Spell_Resist.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png/24px-ON-icon-effect-Alchemy-Increase_Spell_Resist.png 1.5x, http://www.uesp.net/w/images/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png 2x">
+            <span class="effect-name">Increase Spell Resist</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Increase Armor"
+                src="http://www.uesp.net/w/images/thumb/7/76/ON-icon-effect-Alchemy-Increase_Armor.png/16px-ON-icon-effect-Alchemy-Increase_Armor.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/76/ON-icon-effect-Alchemy-Increase_Armor.png/24px-ON-icon-effect-Alchemy-Increase_Armor.png 1.5x, http://www.uesp.net/w/images/7/76/ON-icon-effect-Alchemy-Increase_Armor.png 2x">
+            <span class="effect-name">Increase Armor</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Protection"
+                src="http://www.uesp.net/w/images/thumb/2/2a/ON-icon-effect-Alchemy-Protection.png/16px-ON-icon-effect-Alchemy-Protection.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/2a/ON-icon-effect-Alchemy-Protection.png/24px-ON-icon-effect-Alchemy-Protection.png 1.5x, http://www.uesp.net/w/images/2/2a/ON-icon-effect-Alchemy-Protection.png 2x">
+            <span class="effect-name">Protection</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Defile"
+                src="http://www.uesp.net/w/images/thumb/6/6c/ON-icon-effect-Alchemy-Defile.png/16px-ON-icon-effect-Alchemy-Defile.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/6/6c/ON-icon-effect-Alchemy-Defile.png/24px-ON-icon-effect-Alchemy-Defile.png 1.5x, http://www.uesp.net/w/images/6/6c/ON-icon-effect-Alchemy-Defile.png 2x">
+            <span class="effect-name">Defile</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Namira's Rot.png"
+                src="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-reagent-Namira%27s_Rot.png/32px-ON-icon-reagent-Namira%27s_Rot.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/2/2b/ON-icon-reagent-Namira%27s_Rot.png 1.5x, http://www.uesp.net/w/images/2/2b/ON-icon-reagent-Namira%27s_Rot.png 2x">
+        </td>
+        <th class="reagent-name">Namira's Rot</th>
+        <td class="effect potion">
+            <img alt="Spell Crit"
+                src="http://www.uesp.net/w/images/thumb/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png/16px-ON-icon-effect-Alchemy-Spell_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png/24px-ON-icon-effect-Alchemy-Spell_Crit.png 1.5x, http://www.uesp.net/w/images/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png 2x">
+            <span class="effect-name">Spell Crit</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Speed"
+                src="http://www.uesp.net/w/images/thumb/3/3b/ON-icon-effect-Alchemy-Speed.png/16px-ON-icon-effect-Alchemy-Speed.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/3b/ON-icon-effect-Alchemy-Speed.png/24px-ON-icon-effect-Alchemy-Speed.png 1.5x, http://www.uesp.net/w/images/3/3b/ON-icon-effect-Alchemy-Speed.png 2x">
+            <span class="effect-name">Speed</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Invisible"
+                src="http://www.uesp.net/w/images/thumb/d/da/ON-icon-effect-Alchemy-Invisible.png/16px-ON-icon-effect-Alchemy-Invisible.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/d/da/ON-icon-effect-Alchemy-Invisible.png/24px-ON-icon-effect-Alchemy-Invisible.png 1.5x, http://www.uesp.net/w/images/d/da/ON-icon-effect-Alchemy-Invisible.png 2x">
+            <span class="effect-name">Invisible</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Unstoppable"
+                src="http://www.uesp.net/w/images/thumb/1/11/ON-icon-effect-Alchemy-Unstoppable.png/16px-ON-icon-effect-Alchemy-Unstoppable.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/1/11/ON-icon-effect-Alchemy-Unstoppable.png/24px-ON-icon-effect-Alchemy-Unstoppable.png 1.5x, http://www.uesp.net/w/images/1/11/ON-icon-effect-Alchemy-Unstoppable.png 2x">
+            <span class="effect-name">Unstoppable</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Nightshade.png"
+                src="http://www.uesp.net/w/images/thumb/c/cf/ON-icon-reagent-Nightshade.png/32px-ON-icon-reagent-Nightshade.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/c/cf/ON-icon-reagent-Nightshade.png/48px-ON-icon-reagent-Nightshade.png 1.5x, http://www.uesp.net/w/images/c/cf/ON-icon-reagent-Nightshade.png 2x">
+        </td>
+        <th class="reagent-name">Nightshade</th>
+        <td class="effect poison">
+            <img alt="Ravage Health"
+                src="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/16px-ON-icon-effect-Alchemy-Ravage_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/24px-ON-icon-effect-Alchemy-Ravage_Health.png 1.5x, http://www.uesp.net/w/images/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png 2x">
+            <span class="effect-name">Ravage Health</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Protection"
+                src="http://www.uesp.net/w/images/thumb/2/2a/ON-icon-effect-Alchemy-Protection.png/16px-ON-icon-effect-Alchemy-Protection.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/2a/ON-icon-effect-Alchemy-Protection.png/24px-ON-icon-effect-Alchemy-Protection.png 1.5x, http://www.uesp.net/w/images/2/2a/ON-icon-effect-Alchemy-Protection.png 2x">
+            <span class="effect-name">Protection</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Creeping Ravage Health"
+                src="http://www.uesp.net/w/images/thumb/9/9b/ON-icon-effect-Alchemy-Creeping_Ravage_Health.png/16px-ON-icon-effect-Alchemy-Creeping_Ravage_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/9/9b/ON-icon-effect-Alchemy-Creeping_Ravage_Health.png/24px-ON-icon-effect-Alchemy-Creeping_Ravage_Health.png 1.5x, http://www.uesp.net/w/images/9/9b/ON-icon-effect-Alchemy-Creeping_Ravage_Health.png 2x">
+            <span class="effect-name">Creeping Ravage Health</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Defile"
+                src="http://www.uesp.net/w/images/thumb/6/6c/ON-icon-effect-Alchemy-Defile.png/16px-ON-icon-effect-Alchemy-Defile.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/6/6c/ON-icon-effect-Alchemy-Defile.png/24px-ON-icon-effect-Alchemy-Defile.png 1.5x, http://www.uesp.net/w/images/6/6c/ON-icon-effect-Alchemy-Defile.png 2x">
+            <span class="effect-name">Defile</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Nirnroot.png"
+                src="http://www.uesp.net/w/images/thumb/4/46/ON-icon-reagent-Nirnroot.png/32px-ON-icon-reagent-Nirnroot.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/4/46/ON-icon-reagent-Nirnroot.png 1.5x, http://www.uesp.net/w/images/4/46/ON-icon-reagent-Nirnroot.png 2x">
+        </td>
+        <th class="reagent-name">Nirnroot</th>
+        <td class="effect poison">
+            <img alt="Ravage Health"
+                src="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/16px-ON-icon-effect-Alchemy-Ravage_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/24px-ON-icon-effect-Alchemy-Ravage_Health.png 1.5x, http://www.uesp.net/w/images/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png 2x">
+            <span class="effect-name">Ravage Health</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Spell Crit"
+                src="http://www.uesp.net/w/images/thumb/3/3f/ON-icon-effect-Alchemy-Lower_Spell_Crit.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/3f/ON-icon-effect-Alchemy-Lower_Spell_Crit.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Crit.png 1.5x, http://www.uesp.net/w/images/3/3f/ON-icon-effect-Alchemy-Lower_Spell_Crit.png 2x">
+            <span class="effect-name">Lower Spell Crit</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Weapon Crit"
+                src="http://www.uesp.net/w/images/thumb/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png/16px-ON-icon-effect-Alchemy-Lower_Weapon_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png/24px-ON-icon-effect-Alchemy-Lower_Weapon_Crit.png 1.5x, http://www.uesp.net/w/images/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png 2x">
+            <span class="effect-name">Lower Weapon Crit</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Invisible"
+                src="http://www.uesp.net/w/images/thumb/d/da/ON-icon-effect-Alchemy-Invisible.png/16px-ON-icon-effect-Alchemy-Invisible.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/d/da/ON-icon-effect-Alchemy-Invisible.png/24px-ON-icon-effect-Alchemy-Invisible.png 1.5x, http://www.uesp.net/w/images/d/da/ON-icon-effect-Alchemy-Invisible.png 2x">
+            <span class="effect-name">Invisible</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Scrib Jelly.png"
+                src="http://www.uesp.net/w/images/thumb/5/57/ON-icon-reagent-Scrib_Jelly.png/32px-ON-icon-reagent-Scrib_Jelly.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/5/57/ON-icon-reagent-Scrib_Jelly.png/48px-ON-icon-reagent-Scrib_Jelly.png 1.5x, http://www.uesp.net/w/images/5/57/ON-icon-reagent-Scrib_Jelly.png 2x">
+        </td>
+        <th class="reagent-name">Scrib Jelly</th>
+        <td class="effect poison">
+            <img alt="Ravage Magicka"
+                src="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/16px-ON-icon-effect-Alchemy-Ravage_Magicka.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/24px-ON-icon-effect-Alchemy-Ravage_Magicka.png 1.5x, http://www.uesp.net/w/images/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png 2x">
+            <span class="effect-name">Ravage Magicka</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Speed"
+                src="http://www.uesp.net/w/images/thumb/3/3b/ON-icon-effect-Alchemy-Speed.png/16px-ON-icon-effect-Alchemy-Speed.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/3b/ON-icon-effect-Alchemy-Speed.png/24px-ON-icon-effect-Alchemy-Speed.png 1.5x, http://www.uesp.net/w/images/3/3b/ON-icon-effect-Alchemy-Speed.png 2x">
+            <span class="effect-name">Speed</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Vulnerability"
+                src="http://www.uesp.net/w/images/thumb/8/8b/ON-icon-effect-Alchemy-Vulnerability.png/16px-ON-icon-effect-Alchemy-Vulnerability.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/8/8b/ON-icon-effect-Alchemy-Vulnerability.png/24px-ON-icon-effect-Alchemy-Vulnerability.png 1.5x, http://www.uesp.net/w/images/8/8b/ON-icon-effect-Alchemy-Vulnerability.png 2x">
+            <span class="effect-name">Vulnerability</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Sustained Restore Health"
+                src="http://www.uesp.net/w/images/thumb/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png/16px-ON-icon-effect-Alchemy-Sustained_Restore_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png/24px-ON-icon-effect-Alchemy-Sustained_Restore_Health.png 1.5x, http://www.uesp.net/w/images/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png 2x">
+            <span class="effect-name">Sustained Restore Health</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Spider Egg.png"
+                src="http://www.uesp.net/w/images/thumb/9/98/ON-icon-reagent-Spider_Egg.png/32px-ON-icon-reagent-Spider_Egg.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/9/98/ON-icon-reagent-Spider_Egg.png/48px-ON-icon-reagent-Spider_Egg.png 1.5x, http://www.uesp.net/w/images/9/98/ON-icon-reagent-Spider_Egg.png 2x">
+        </td>
+        <th class="reagent-name">Spider Egg</th>
+        <td class="effect poison">
+            <img alt="Reduce Speed"
+                src="http://www.uesp.net/w/images/thumb/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png/16px-ON-icon-effect-Alchemy-Reduce_Speed.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png/24px-ON-icon-effect-Alchemy-Reduce_Speed.png 1.5x, http://www.uesp.net/w/images/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png 2x">
+            <span class="effect-name">Reduce Speed</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Invisible"
+                src="http://www.uesp.net/w/images/thumb/d/da/ON-icon-effect-Alchemy-Invisible.png/16px-ON-icon-effect-Alchemy-Invisible.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/d/da/ON-icon-effect-Alchemy-Invisible.png/24px-ON-icon-effect-Alchemy-Invisible.png 1.5x, http://www.uesp.net/w/images/d/da/ON-icon-effect-Alchemy-Invisible.png 2x">
+            <span class="effect-name">Invisible</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Sustained Restore Health"
+                src="http://www.uesp.net/w/images/thumb/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png/16px-ON-icon-effect-Alchemy-Sustained_Restore_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png/24px-ON-icon-effect-Alchemy-Sustained_Restore_Health.png 1.5x, http://www.uesp.net/w/images/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png 2x">
+            <span class="effect-name">Sustained Restore Health</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Defile"
+                src="http://www.uesp.net/w/images/thumb/6/6c/ON-icon-effect-Alchemy-Defile.png/16px-ON-icon-effect-Alchemy-Defile.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/6/6c/ON-icon-effect-Alchemy-Defile.png/24px-ON-icon-effect-Alchemy-Defile.png 1.5x, http://www.uesp.net/w/images/6/6c/ON-icon-effect-Alchemy-Defile.png 2x">
+            <span class="effect-name">Defile</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Stinkhorn.png"
+                src="http://www.uesp.net/w/images/thumb/e/ec/ON-icon-reagent-Stinkhorn.png/32px-ON-icon-reagent-Stinkhorn.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/e/ec/ON-icon-reagent-Stinkhorn.png 1.5x, http://www.uesp.net/w/images/e/ec/ON-icon-reagent-Stinkhorn.png 2x">
+        </td>
+        <th class="reagent-name">Stinkhorn</th>
+        <td class="effect poison">
+            <img alt="Lower Armor"
+                src="http://www.uesp.net/w/images/thumb/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png/16px-ON-icon-effect-Alchemy-Lower_Armor.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png/24px-ON-icon-effect-Alchemy-Lower_Armor.png 1.5x, http://www.uesp.net/w/images/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png 2x">
+            <span class="effect-name">Lower Armor</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Ravage Health"
+                src="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/16px-ON-icon-effect-Alchemy-Ravage_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/24px-ON-icon-effect-Alchemy-Ravage_Health.png 1.5x, http://www.uesp.net/w/images/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png 2x">
+            <span class="effect-name">Ravage Health</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Increase Weapon Power"
+                src="http://www.uesp.net/w/images/thumb/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png/16px-ON-icon-effect-Alchemy-Increase_Weapon_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png/24px-ON-icon-effect-Alchemy-Increase_Weapon_Power.png 1.5x, http://www.uesp.net/w/images/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png 2x">
+            <span class="effect-name">Increase Weapon Power</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Ravage Stamina"
+                src="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/16px-ON-icon-effect-Alchemy-Ravage_Stamina.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/24px-ON-icon-effect-Alchemy-Ravage_Stamina.png 1.5x, http://www.uesp.net/w/images/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png 2x">
+            <span class="effect-name">Ravage Stamina</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Torchbug Thorax.png"
+                src="http://www.uesp.net/w/images/thumb/7/74/ON-icon-reagent-Torchbug_Thorax.png/32px-ON-icon-reagent-Torchbug_Thorax.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/thumb/7/74/ON-icon-reagent-Torchbug_Thorax.png/48px-ON-icon-reagent-Torchbug_Thorax.png 1.5x, http://www.uesp.net/w/images/7/74/ON-icon-reagent-Torchbug_Thorax.png 2x">
+        </td>
+        <th class="reagent-name">Torchbug Thorax</th>
+        <td class="effect poison">
+            <img alt="Lower Armor"
+                src="http://www.uesp.net/w/images/thumb/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png/16px-ON-icon-effect-Alchemy-Lower_Armor.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png/24px-ON-icon-effect-Alchemy-Lower_Armor.png 1.5x, http://www.uesp.net/w/images/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png 2x">
+            <span class="effect-name">Lower Armor</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Lower Weapon Crit"
+                src="http://www.uesp.net/w/images/thumb/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png/16px-ON-icon-effect-Alchemy-Lower_Weapon_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png/24px-ON-icon-effect-Alchemy-Lower_Weapon_Crit.png 1.5x, http://www.uesp.net/w/images/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png 2x">
+            <span class="effect-name">Lower Weapon Crit</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Detection"
+                src="http://www.uesp.net/w/images/thumb/3/37/ON-icon-effect-Alchemy-Detection.png/16px-ON-icon-effect-Alchemy-Detection.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/37/ON-icon-effect-Alchemy-Detection.png/24px-ON-icon-effect-Alchemy-Detection.png 1.5x, http://www.uesp.net/w/images/3/37/ON-icon-effect-Alchemy-Detection.png 2x">
+            <span class="effect-name">Detection</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Vitality"
+                src="http://www.uesp.net/w/images/thumb/5/51/ON-icon-effect-Alchemy-Vitality.png/16px-ON-icon-effect-Alchemy-Vitality.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/51/ON-icon-effect-Alchemy-Vitality.png/24px-ON-icon-effect-Alchemy-Vitality.png 1.5x, http://www.uesp.net/w/images/5/51/ON-icon-effect-Alchemy-Vitality.png 2x">
+            <span class="effect-name">Vitality</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Violet Coprinus.png"
+                src="http://www.uesp.net/w/images/thumb/e/e5/ON-icon-reagent-Violet_Coprinus.png/32px-ON-icon-reagent-Violet_Coprinus.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/e/e5/ON-icon-reagent-Violet_Coprinus.png 1.5x, http://www.uesp.net/w/images/e/e5/ON-icon-reagent-Violet_Coprinus.png 2x">
+        </td>
+        <th class="reagent-name">Violet Coprinus</th>
+        <td class="effect poison">
+            <img alt="Lower Spell Resist"
+                src="http://www.uesp.net/w/images/thumb/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Resist.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Resist.png 1.5x, http://www.uesp.net/w/images/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png 2x">
+            <span class="effect-name">Lower Spell Resist</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Ravage Health"
+                src="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/16px-ON-icon-effect-Alchemy-Ravage_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/24px-ON-icon-effect-Alchemy-Ravage_Health.png 1.5x, http://www.uesp.net/w/images/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png 2x">
+            <span class="effect-name">Ravage Health</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Increase Spell Power"
+                src="http://www.uesp.net/w/images/thumb/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png/16px-ON-icon-effect-Alchemy-Increase_Spell_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png/24px-ON-icon-effect-Alchemy-Increase_Spell_Power.png 1.5x, http://www.uesp.net/w/images/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png 2x">
+            <span class="effect-name">Increase Spell Power</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Ravage Magicka"
+                src="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/16px-ON-icon-effect-Alchemy-Ravage_Magicka.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/24px-ON-icon-effect-Alchemy-Ravage_Magicka.png 1.5x, http://www.uesp.net/w/images/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png 2x">
+            <span class="effect-name">Ravage Magicka</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Water Hyacinth.png"
+                src="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-reagent-Water_Hyacinth.png/32px-ON-icon-reagent-Water_Hyacinth.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/7/7f/ON-icon-reagent-Water_Hyacinth.png 1.5x, http://www.uesp.net/w/images/7/7f/ON-icon-reagent-Water_Hyacinth.png 2x">
+        </td>
+        <th class="reagent-name">Water Hyacinth</th>
+        <td class="effect potion">
+            <img alt="Restore Health"
+                src="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/16px-ON-icon-effect-Alchemy-Restore_Health.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/24px-ON-icon-effect-Alchemy-Restore_Health.png 1.5x, http://www.uesp.net/w/images/2/24/ON-icon-effect-Alchemy-Restore_Health.png 2x">
+            <span class="effect-name">Restore Health</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Spell Crit"
+                src="http://www.uesp.net/w/images/thumb/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png/16px-ON-icon-effect-Alchemy-Spell_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png/24px-ON-icon-effect-Alchemy-Spell_Crit.png 1.5x, http://www.uesp.net/w/images/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png 2x">
+            <span class="effect-name">Spell Crit</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Weapon Crit"
+                src="http://www.uesp.net/w/images/thumb/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png/16px-ON-icon-effect-Alchemy-Weapon_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png/24px-ON-icon-effect-Alchemy-Weapon_Crit.png 1.5x, http://www.uesp.net/w/images/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png 2x">
+            <span class="effect-name">Weapon Crit</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Stun"
+                src="http://www.uesp.net/w/images/thumb/0/08/ON-icon-effect-Alchemy-Stun.png/16px-ON-icon-effect-Alchemy-Stun.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/0/08/ON-icon-effect-Alchemy-Stun.png/24px-ON-icon-effect-Alchemy-Stun.png 1.5x, http://www.uesp.net/w/images/0/08/ON-icon-effect-Alchemy-Stun.png 2x">
+            <span class="effect-name">Stun</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-White Cap.png"
+                src="http://www.uesp.net/w/images/thumb/8/8a/ON-icon-reagent-White_Cap.png/32px-ON-icon-reagent-White_Cap.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/8/8a/ON-icon-reagent-White_Cap.png 1.5x, http://www.uesp.net/w/images/8/8a/ON-icon-reagent-White_Cap.png 2x">
+        </td>
+        <th class="reagent-name">White Cap</th>
+        <td class="effect poison">
+            <img alt="Lower Spell Power"
+                src="http://www.uesp.net/w/images/thumb/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Power.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Power.png 1.5x, http://www.uesp.net/w/images/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png 2x">
+            <span class="effect-name">Lower Spell Power</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Ravage Magicka"
+                src="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/16px-ON-icon-effect-Alchemy-Ravage_Magicka.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/24px-ON-icon-effect-Alchemy-Ravage_Magicka.png 1.5x, http://www.uesp.net/w/images/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png 2x">
+            <span class="effect-name">Ravage Magicka</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Increase Spell Resist"
+                src="http://www.uesp.net/w/images/thumb/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png/16px-ON-icon-effect-Alchemy-Increase_Spell_Resist.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png/24px-ON-icon-effect-Alchemy-Increase_Spell_Resist.png 1.5x, http://www.uesp.net/w/images/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png 2x">
+            <span class="effect-name">Increase Spell Resist</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Detection"
+                src="http://www.uesp.net/w/images/thumb/3/37/ON-icon-effect-Alchemy-Detection.png/16px-ON-icon-effect-Alchemy-Detection.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/37/ON-icon-effect-Alchemy-Detection.png/24px-ON-icon-effect-Alchemy-Detection.png 1.5x, http://www.uesp.net/w/images/3/37/ON-icon-effect-Alchemy-Detection.png 2x">
+            <span class="effect-name">Detection</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="reagent-img">
+            <img alt="ON-icon-reagent-Wormwood.png"
+                src="http://www.uesp.net/w/images/thumb/7/71/ON-icon-reagent-Wormwood.png/32px-ON-icon-reagent-Wormwood.png"
+                width="32" height="32"
+                srcset="http://www.uesp.net/w/images/7/71/ON-icon-reagent-Wormwood.png 1.5x, http://www.uesp.net/w/images/7/71/ON-icon-reagent-Wormwood.png 2x">
+        </td>
+        <th class="reagent-name">Wormwood</th>
+        <td class="effect potion">
+            <img alt="Weapon Crit"
+                src="http://www.uesp.net/w/images/thumb/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png/16px-ON-icon-effect-Alchemy-Weapon_Crit.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png/24px-ON-icon-effect-Alchemy-Weapon_Crit.png 1.5x, http://www.uesp.net/w/images/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png 2x">
+            <span class="effect-name">Weapon Crit</span>
+        </td>
+        <td class="effect poison">
+            <img alt="Reduce Speed"
+                src="http://www.uesp.net/w/images/thumb/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png/16px-ON-icon-effect-Alchemy-Reduce_Speed.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png/24px-ON-icon-effect-Alchemy-Reduce_Speed.png 1.5x, http://www.uesp.net/w/images/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png 2x">
+            <span class="effect-name">Reduce Speed</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Detection"
+                src="http://www.uesp.net/w/images/thumb/3/37/ON-icon-effect-Alchemy-Detection.png/16px-ON-icon-effect-Alchemy-Detection.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/3/37/ON-icon-effect-Alchemy-Detection.png/24px-ON-icon-effect-Alchemy-Detection.png 1.5x, http://www.uesp.net/w/images/3/37/ON-icon-effect-Alchemy-Detection.png 2x">
+            <span class="effect-name">Detection</span>
+        </td>
+        <td class="effect potion">
+            <img alt="Unstoppable"
+                src="http://www.uesp.net/w/images/thumb/1/11/ON-icon-effect-Alchemy-Unstoppable.png/16px-ON-icon-effect-Alchemy-Unstoppable.png"
+                width="16" height="16"
+                srcset="http://www.uesp.net/w/images/thumb/1/11/ON-icon-effect-Alchemy-Unstoppable.png/24px-ON-icon-effect-Alchemy-Unstoppable.png 1.5x, http://www.uesp.net/w/images/1/11/ON-icon-effect-Alchemy-Unstoppable.png 2x">
+            <span class="effect-name">Unstoppable</span>
+        </td>
+    </tr>
+</table>
+
+
+<div class="effects potions">
+    <header>Potion effects</header>
+    <div class="effect potion">
+        <img alt="Detection"
+            src="http://www.uesp.net/w/images/thumb/3/37/ON-icon-effect-Alchemy-Detection.png/16px-ON-icon-effect-Alchemy-Detection.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/3/37/ON-icon-effect-Alchemy-Detection.png/24px-ON-icon-effect-Alchemy-Detection.png 1.5x, http://www.uesp.net/w/images/3/37/ON-icon-effect-Alchemy-Detection.png 2x">
+        <span class="effect-name">Detection</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Increase Spell Resist"
+            src="http://www.uesp.net/w/images/thumb/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png/16px-ON-icon-effect-Alchemy-Increase_Spell_Resist.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png/24px-ON-icon-effect-Alchemy-Increase_Spell_Resist.png 1.5x, http://www.uesp.net/w/images/7/7e/ON-icon-effect-Alchemy-Increase_Spell_Resist.png 2x">
+        <span class="effect-name">Increase Spell Resist</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Increase Armor"
+            src="http://www.uesp.net/w/images/thumb/7/76/ON-icon-effect-Alchemy-Increase_Armor.png/16px-ON-icon-effect-Alchemy-Increase_Armor.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/7/76/ON-icon-effect-Alchemy-Increase_Armor.png/24px-ON-icon-effect-Alchemy-Increase_Armor.png 1.5x, http://www.uesp.net/w/images/7/76/ON-icon-effect-Alchemy-Increase_Armor.png 2x">
+        <span class="effect-name">Increase Armor</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Increase Spell Power"
+            src="http://www.uesp.net/w/images/thumb/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png/16px-ON-icon-effect-Alchemy-Increase_Spell_Power.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png/24px-ON-icon-effect-Alchemy-Increase_Spell_Power.png 1.5x, http://www.uesp.net/w/images/1/15/ON-icon-effect-Alchemy-Increase_Spell_Power.png 2x">
+        <span class="effect-name">Increase Spell Power</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Increase Weapon Power"
+            src="http://www.uesp.net/w/images/thumb/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png/16px-ON-icon-effect-Alchemy-Increase_Weapon_Power.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png/24px-ON-icon-effect-Alchemy-Increase_Weapon_Power.png 1.5x, http://www.uesp.net/w/images/c/cd/ON-icon-effect-Alchemy-Increase_Weapon_Power.png 2x">
+        <span class="effect-name">Increase Weapon Power</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Invisible"
+            src="http://www.uesp.net/w/images/thumb/d/da/ON-icon-effect-Alchemy-Invisible.png/16px-ON-icon-effect-Alchemy-Invisible.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/d/da/ON-icon-effect-Alchemy-Invisible.png/24px-ON-icon-effect-Alchemy-Invisible.png 1.5x, http://www.uesp.net/w/images/d/da/ON-icon-effect-Alchemy-Invisible.png 2x">
+        <span class="effect-name">Invisible</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Protection"
+            src="http://www.uesp.net/w/images/thumb/2/2a/ON-icon-effect-Alchemy-Protection.png/16px-ON-icon-effect-Alchemy-Protection.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/2/2a/ON-icon-effect-Alchemy-Protection.png/24px-ON-icon-effect-Alchemy-Protection.png 1.5x, http://www.uesp.net/w/images/2/2a/ON-icon-effect-Alchemy-Protection.png 2x">
+        <span class="effect-name">Protection</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Restore Health"
+            src="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/16px-ON-icon-effect-Alchemy-Restore_Health.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/2/24/ON-icon-effect-Alchemy-Restore_Health.png/24px-ON-icon-effect-Alchemy-Restore_Health.png 1.5x, http://www.uesp.net/w/images/2/24/ON-icon-effect-Alchemy-Restore_Health.png 2x">
+        <span class="effect-name">Restore Health</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Restore Magicka"
+            src="http://www.uesp.net/w/images/thumb/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png/16px-ON-icon-effect-Alchemy-Restore_Magicka.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png/24px-ON-icon-effect-Alchemy-Restore_Magicka.png 1.5x, http://www.uesp.net/w/images/9/93/ON-icon-effect-Alchemy-Restore_Magicka.png 2x">
+        <span class="effect-name">Restore Magicka</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Restore Stamina"
+            src="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png/16px-ON-icon-effect-Alchemy-Restore_Stamina.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png/24px-ON-icon-effect-Alchemy-Restore_Stamina.png 1.5x, http://www.uesp.net/w/images/2/2b/ON-icon-effect-Alchemy-Restore_Stamina.png 2x">
+        <span class="effect-name">Restore Stamina</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Speed"
+            src="http://www.uesp.net/w/images/thumb/3/3b/ON-icon-effect-Alchemy-Speed.png/16px-ON-icon-effect-Alchemy-Speed.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/3/3b/ON-icon-effect-Alchemy-Speed.png/24px-ON-icon-effect-Alchemy-Speed.png 1.5x, http://www.uesp.net/w/images/3/3b/ON-icon-effect-Alchemy-Speed.png 2x">
+        <span class="effect-name">Speed</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Sustained Restore Health"
+            src="http://www.uesp.net/w/images/thumb/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png/16px-ON-icon-effect-Alchemy-Sustained_Restore_Health.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png/24px-ON-icon-effect-Alchemy-Sustained_Restore_Health.png 1.5x, http://www.uesp.net/w/images/a/ae/ON-icon-effect-Alchemy-Sustained_Restore_Health.png 2x">
+        <span class="effect-name">Sustained Restore Health</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Spell Crit"
+            src="http://www.uesp.net/w/images/thumb/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png/16px-ON-icon-effect-Alchemy-Spell_Crit.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png/24px-ON-icon-effect-Alchemy-Spell_Crit.png 1.5x, http://www.uesp.net/w/images/5/5b/ON-icon-effect-Alchemy-Spell_Crit.png 2x">
+        <span class="effect-name">Spell Crit</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Unstoppable"
+            src="http://www.uesp.net/w/images/thumb/1/11/ON-icon-effect-Alchemy-Unstoppable.png/16px-ON-icon-effect-Alchemy-Unstoppable.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/1/11/ON-icon-effect-Alchemy-Unstoppable.png/24px-ON-icon-effect-Alchemy-Unstoppable.png 1.5x, http://www.uesp.net/w/images/1/11/ON-icon-effect-Alchemy-Unstoppable.png 2x">
+        <span class="effect-name">Unstoppable</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Vitality"
+            src="http://www.uesp.net/w/images/thumb/5/51/ON-icon-effect-Alchemy-Vitality.png/16px-ON-icon-effect-Alchemy-Vitality.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/5/51/ON-icon-effect-Alchemy-Vitality.png/24px-ON-icon-effect-Alchemy-Vitality.png 1.5x, http://www.uesp.net/w/images/5/51/ON-icon-effect-Alchemy-Vitality.png 2x">
+        <span class="effect-name">Vitality</span>
+    </div>
+    <div class="effect potion">
+        <img alt="Weapon Crit"
+            src="http://www.uesp.net/w/images/thumb/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png/16px-ON-icon-effect-Alchemy-Weapon_Crit.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png/24px-ON-icon-effect-Alchemy-Weapon_Crit.png 1.5x, http://www.uesp.net/w/images/0/0b/ON-icon-effect-Alchemy-Weapon_Crit.png 2x">
+        <span class="effect-name">Weapon Crit</span>
+    </div>
+</div>
+
+<div class="effects poisons">
+    <header>Poison effects</header>
+    <div class="effect poison">
+        <img alt="Creeping Ravage Health"
+            src="http://www.uesp.net/w/images/thumb/9/9b/ON-icon-effect-Alchemy-Creeping_Ravage_Health.png/16px-ON-icon-effect-Alchemy-Creeping_Ravage_Health.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/9/9b/ON-icon-effect-Alchemy-Creeping_Ravage_Health.png/24px-ON-icon-effect-Alchemy-Creeping_Ravage_Health.png 1.5x, http://www.uesp.net/w/images/9/9b/ON-icon-effect-Alchemy-Creeping_Ravage_Health.png 2x">
+        <span class="effect-name">Creeping Ravage Health</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Defile"
+            src="http://www.uesp.net/w/images/thumb/6/6c/ON-icon-effect-Alchemy-Defile.png/16px-ON-icon-effect-Alchemy-Defile.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/6/6c/ON-icon-effect-Alchemy-Defile.png/24px-ON-icon-effect-Alchemy-Defile.png 1.5x, http://www.uesp.net/w/images/6/6c/ON-icon-effect-Alchemy-Defile.png 2x">
+        <span class="effect-name">Defile</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Lower Weapon Crit"
+            src="http://www.uesp.net/w/images/thumb/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png/16px-ON-icon-effect-Alchemy-Lower_Weapon_Crit.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png/24px-ON-icon-effect-Alchemy-Lower_Weapon_Crit.png 1.5x, http://www.uesp.net/w/images/3/3a/ON-icon-effect-Alchemy-Lower_Weapon_Crit.png 2x">
+        <span class="effect-name">Lower Weapon Crit</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Lower Spell Power"
+            src="http://www.uesp.net/w/images/thumb/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Power.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Power.png 1.5x, http://www.uesp.net/w/images/5/50/ON-icon-effect-Alchemy-Lower_Spell_Power.png 2x">
+        <span class="effect-name">Lower Spell Power</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Lower Spell Crit"
+            src="http://www.uesp.net/w/images/thumb/3/3f/ON-icon-effect-Alchemy-Lower_Spell_Crit.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Crit.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/3/3f/ON-icon-effect-Alchemy-Lower_Spell_Crit.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Crit.png 1.5x, http://www.uesp.net/w/images/3/3f/ON-icon-effect-Alchemy-Lower_Spell_Crit.png 2x">
+        <span class="effect-name">Lower Spell Crit</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Lower Armor"
+            src="http://www.uesp.net/w/images/thumb/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png/16px-ON-icon-effect-Alchemy-Lower_Armor.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png/24px-ON-icon-effect-Alchemy-Lower_Armor.png 1.5x, http://www.uesp.net/w/images/f/f7/ON-icon-effect-Alchemy-Lower_Armor.png 2x">
+        <span class="effect-name">Lower Armor</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Lower Weapon Power"
+            src="http://www.uesp.net/w/images/thumb/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png/16px-ON-icon-effect-Alchemy-Lower_Weapon_Power.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png/24px-ON-icon-effect-Alchemy-Lower_Weapon_Power.png 1.5x, http://www.uesp.net/w/images/1/16/ON-icon-effect-Alchemy-Lower_Weapon_Power.png 2x">
+        <span class="effect-name">Lower Weapon Power</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Lower Spell Resist"
+            src="http://www.uesp.net/w/images/thumb/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png/16px-ON-icon-effect-Alchemy-Lower_Spell_Resist.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png/24px-ON-icon-effect-Alchemy-Lower_Spell_Resist.png 1.5x, http://www.uesp.net/w/images/5/52/ON-icon-effect-Alchemy-Lower_Spell_Resist.png 2x">
+        <span class="effect-name">Lower Spell Resist</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Ravage Health"
+            src="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/16px-ON-icon-effect-Alchemy-Ravage_Health.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png/24px-ON-icon-effect-Alchemy-Ravage_Health.png 1.5x, http://www.uesp.net/w/images/6/6a/ON-icon-effect-Alchemy-Ravage_Health.png 2x">
+        <span class="effect-name">Ravage Health</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Ravage Stamina"
+            src="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/16px-ON-icon-effect-Alchemy-Ravage_Stamina.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png/24px-ON-icon-effect-Alchemy-Ravage_Stamina.png 1.5x, http://www.uesp.net/w/images/7/7f/ON-icon-effect-Alchemy-Ravage_Stamina.png 2x">
+        <span class="effect-name">Ravage Stamina</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Ravage Magicka"
+            src="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/16px-ON-icon-effect-Alchemy-Ravage_Magicka.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png/24px-ON-icon-effect-Alchemy-Ravage_Magicka.png 1.5x, http://www.uesp.net/w/images/d/df/ON-icon-effect-Alchemy-Ravage_Magicka.png 2x">
+        <span class="effect-name">Ravage Magicka</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Reduce Speed"
+            src="http://www.uesp.net/w/images/thumb/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png/16px-ON-icon-effect-Alchemy-Reduce_Speed.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png/24px-ON-icon-effect-Alchemy-Reduce_Speed.png 1.5x, http://www.uesp.net/w/images/c/cb/ON-icon-effect-Alchemy-Reduce_Speed.png 2x">
+        <span class="effect-name">Reduce Speed</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Stun"
+            src="http://www.uesp.net/w/images/thumb/0/08/ON-icon-effect-Alchemy-Stun.png/16px-ON-icon-effect-Alchemy-Stun.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/0/08/ON-icon-effect-Alchemy-Stun.png/24px-ON-icon-effect-Alchemy-Stun.png 1.5x, http://www.uesp.net/w/images/0/08/ON-icon-effect-Alchemy-Stun.png 2x">
+        <span class="effect-name">Stun</span>
+    </div>
+    <div class="effect poison">
+        <img alt="Vulnerability"
+            src="http://www.uesp.net/w/images/thumb/8/8b/ON-icon-effect-Alchemy-Vulnerability.png/16px-ON-icon-effect-Alchemy-Vulnerability.png"
+            width="16" height="16"
+            srcset="http://www.uesp.net/w/images/thumb/8/8b/ON-icon-effect-Alchemy-Vulnerability.png/24px-ON-icon-effect-Alchemy-Vulnerability.png 1.5x, http://www.uesp.net/w/images/8/8b/ON-icon-effect-Alchemy-Vulnerability.png 2x">
+        <span class="effect-name">Vulnerability</span>
+    </div>
+</div>
+
+<p class="info">
+    Data is taken info from
+    <a href="http://www.uesp.net/wiki/Online:Reagents">uesp.net/wiki/Online:Reagents</a>
+    and some interactivity added. <br> WTFPL license
+</p>
+
+</body>
+</html>
