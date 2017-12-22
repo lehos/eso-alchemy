@@ -6,44 +6,65 @@ $(function() {
         clearFilter: $('.js-clear-filter')
     }
 
-    $('.effect').click(function() {
-        if ($(this).hasClass('effect-filtered')) {
+    var classes = {
+        bodyFiltered: 'filtered-mode',
+        bodyHideOthers: 'hide-others',
+        effect: 'effect',
+        effectName: 'effect-name',
+        effectFiltered: 'effect-filtered',
+        reagentFiltered: 'reagent-filtered',
+        hidden: 'hidden',
+    }
+
+    function activateFilterUi() {
+        dom.body.addClass(classes.bodyFiltered)
+        dom.filterOptions.removeClass(classes.hidden)
+        dom.clearFilter.show()
+    }
+
+    function deactivateFilterUi() {
+        dom.body.removeClass(classes.bodyFiltered)        
+        dom.filterOptions.addClass(classes.hidden)
+        dom.clearFilter.hide()
+    }
+
+    function applyFilter(name) {
+        $('.' + classes.effect).each(function() {
+            var me = $(this)
+            if (me.find('.' + classes.effectName).text() == name) {
+                $(this).addClass(classes.effectFiltered)
+                if (me.is('td')) {
+                    me.parent().addClass(classes.reagentFiltered)
+                }
+            }
+        })
+    }
+
+    function clearFilteredItems() {
+        $('.' + classes.reagentFiltered).removeClass(classes.reagentFiltered)
+        $('.' + classes.effectFiltered).removeClass(classes.effectFiltered)
+    }
+
+    $('.' + classes.effect).click(function() {
+        if ($(this).hasClass(classes.effectFiltered)) {
             clearFilter()
             return
         }
 
-        dom.body.addClass('filtered-mode')
-        dom.filterOptions.removeClass('hidden')
-        dom.clearFilter.show()
-        $('.reagent-filtered').removeClass('reagent-filtered')
-        $('.effect-filtered').removeClass('effect-filtered')
-
-        var name = $(this).find('.effect-name').text()
-        $('.effect').each(function() {
-            var me = $(this)
-            if (me.find('.effect-name').text() == name) {
-                $(this).addClass('effect-filtered')
-                if (me.is('td')) {
-                    me.parent().addClass('reagent-filtered')
-                }
-            }
-        })
-    })
-
-    function clearFilter() {
-        dom.body.removeClass('filtered-mode')
-        $('.reagent-filtered').removeClass('reagent-filtered')
-        $('.effect-filtered').removeClass('effect-filtered')
-        dom.filterOptions.addClass('hidden')
-        dom.clearFilter.hide()
-    }
+        activateFilterUi()
+        clearFilteredItems()
+        
+        var name = $(this).children('.' + classes.effectName).text()
+        applyFilter(name)
+    })    
 
     dom.clearFilter.click(function() {
-        clearFilter()
+        clearFilteredItems()
+        deactivateFilterUi()
     })
 
     $('.js-hide-others').change(function() {
-        dom.body.toggleClass('hide-others')
+        dom.body.toggleClass(classes.bodyHideOthers)
     })
 
     // concrete columns width
